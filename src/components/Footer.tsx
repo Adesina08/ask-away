@@ -7,7 +7,7 @@ export function Footer() {
             <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">iN</span>
             </div>
-            <span className="font-bold text-xl">InicioNG Tech Hub</span>
+            <span className="font-bold text-xl"><span className="text-[#00afef]">InicioNG</span> Tech Hub</span>
           </div>
 
           <nav className="flex items-center gap-6">
@@ -28,7 +28,7 @@ export function Footer() {
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center">
           <p className="text-primary-foreground/60 text-sm">
-            © 2026 InicioNG Tech Team. All rights reserved.
+            © 2026 <span className="text-[#00afef]">InicioNG</span> Tech Team. All rights reserved.
           </p>
         </div>
       </div>

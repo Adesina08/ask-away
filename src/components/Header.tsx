@@ -10,7 +10,7 @@ export function Header() {
               <span className="text-white font-bold text-lg">iN</span>
             </div>
             <span className="font-bold text-xl text-foreground">
-              InicioNG
+              <span className="text-[#00afef]">InicioNG</span>
             </span>
           </div>
 

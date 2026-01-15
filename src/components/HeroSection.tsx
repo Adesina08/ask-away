@@ -22,7 +22,7 @@ export function HeroSection() {
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 animate-fade-in-delay-1">
             Welcome to{" "}
-            <span className="text-gradient">InicioNG Tech Hub</span>
+            <span className="text-gradient"><span className="text-[#00afef]">InicioNG</span> Tech Hub</span>
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-delay-2">

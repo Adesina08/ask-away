@@ -29,7 +29,13 @@ const useTypingAnimation = (text: string, speed: number = 100) => {
 };
 
 const Index = () => {
-  const { displayedText, isComplete } = useTypingAnimation("Welcome to InicioNG Tech Hub", 80);
+  const fullHeadingText = "Welcome to InicioNG Tech Hub";
+  const brandName = "InicioNG";
+  const brandColorClass = "text-[#00afef]";
+  const { displayedText, isComplete } = useTypingAnimation(fullHeadingText, 80);
+
+  const brandStart = fullHeadingText.indexOf(brandName);
+  const brandEnd = brandStart + brandName.length;
 
   return (
     <div className="min-h-screen bg-background flex flex-col relative overflow-hidden">
@@ -43,7 +49,7 @@ const Index = () => {
           <div className="w-14 h-12 bg-hero-gradient rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
             <span className="text-primary-foreground font-bold text-lg">iN</span>
           </div>
-          <span className="text-xl font-semibold text-foreground">InicioNG Tech</span>
+          <span className="text-xl font-semibold text-foreground"><span className="text-[#00afef]">InicioNG</span> Tech</span>
         </div>
       </header>
 
@@ -61,38 +67,90 @@ const Index = () => {
         {/* Welcome Heading with Typing Animation */}
         <div className="text-center mb-16 animate-fade-in-up">
           <h1 className="text-3xl md:text-5xl font-bold text-foreground leading-tight min-h-[60px] md:min-h-[72px]">
-            {displayedText}
-            {!isComplete && (
-              <span className="inline-block w-1 h-8 md:h-12 bg-primary ml-1 animate-pulse" />
-            )}
+            {/*
+              We render the typed text in three parts so we can color "InicioNG" as it appears.
+              This also works while the text is still being typed.
+            */}
+            <span className="whitespace-pre-wrap">
+              {/* Before brand */}
+              <span>
+                {displayedText.slice(0, Math.min(displayedText.length, brandStart))}
+              </span>
+
+              {/* Brand */}
+              <span className={brandColorClass}>
+                {displayedText.slice(
+                  Math.min(displayedText.length, brandStart),
+                  Math.min(displayedText.length, brandEnd)
+                )}
+              </span>
+
+              {/* After brand */}
+              <span>
+                {displayedText.slice(Math.min(displayedText.length, brandEnd))}
+              </span>
+            </span>
+
+            {/* Blinking cursor (always visible) */}
+            <span
+              aria-hidden="true"
+              className="inline-block w-1 h-8 md:h-12 bg-[#00afef] ml-1 animate-blink"
+            />
+
           </h1>
         </div>
 
         {/* Two Image Cards */}
         <div className="flex flex-col md:flex-row gap-10 w-full max-w-4xl justify-center">
           {/* DataSync Card */}
-          <div className="group flex-1 max-w-sm flex flex-col items-center animate-fade-in-delay-1">
-            <div className="w-full aspect-[5/4] rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-2 cursor-pointer mb-4">
+          <a
+            href="https://surveytosql.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="group flex-1 max-w-sm flex flex-col items-center animate-fade-in-delay-1"
+            aria-label="Open DataSync"
+          >
+            <div className="relative w-full aspect-[5/4] rounded-2xl shadow-lg overflow-hidden border border-border/50 bg-card/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 cursor-pointer mb-4">
               <img 
                 src={datasyncImg} 
                 alt="DataSync" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
+
+              {/* Hover text */}
+              <div className="pointer-events-none absolute inset-0 flex items-end justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <div className="px-3 py-2 rounded-xl bg-background/90 border border-border/60 text-sm font-medium text-foreground shadow">
+                  Open DataSync
+                </div>
+              </div>
             </div>
-            <h3 className="text-xl font-semibold text-foreground">DataSync</h3>
-          </div>
+            <h3 className="text-xl font-semibold text-foreground group-hover:underline">DataSync</h3>
+          </a>
 
           {/* Analysis View Card */}
-          <div className="group flex-1 max-w-sm flex flex-col items-center animate-fade-in-delay-2">
-            <div className="w-full aspect-[5/4] rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-2 cursor-pointer mb-4">
+          <a
+            href="https://httpstat.us/404"
+            target="_blank"
+            rel="noreferrer"
+            className="group flex-1 max-w-sm flex flex-col items-center animate-fade-in-delay-2"
+            aria-label="Open Analysis View"
+          >
+            <div className="relative w-full aspect-[5/4] rounded-2xl shadow-lg overflow-hidden border border-border/50 bg-card/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 cursor-pointer mb-4">
               <img 
                 src={analysisViewImg} 
                 alt="Analysis View" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
+
+              {/* Hover text */}
+              <div className="pointer-events-none absolute inset-0 flex items-end justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <div className="px-3 py-2 rounded-xl bg-background/90 border border-border/60 text-sm font-medium text-foreground shadow">
+                  Coming soon (opens 404)
+                </div>
+              </div>
             </div>
-            <h3 className="text-xl font-semibold text-foreground">Analysis View</h3>
-          </div>
+            <h3 className="text-xl font-semibold text-foreground group-hover:underline">Analysis View</h3>
+          </a>
         </div>
       </main>
 
@@ -100,7 +158,7 @@ const Index = () => {
       <footer className="py-8 px-8 text-center relative z-10 animate-fade-in">
         <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-border to-transparent mb-6" />
         <p className="text-muted-foreground text-sm">
-          © 2026 <span className="font-medium text-foreground">InicioNG Tech Team</span>
+          © 2026 <span className="font-medium text-foreground"><span className="text-[#00afef]">InicioNG</span> Tech Team</span>
         </p>
       </footer>
     </div>
