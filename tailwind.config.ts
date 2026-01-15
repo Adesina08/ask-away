@@ -67,6 +67,10 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        blink: {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -77,6 +81,7 @@ export default {
         },
       },
       animation: {
+        blink: "blink 1s step-end infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
