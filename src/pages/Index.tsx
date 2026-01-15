@@ -1,4 +1,36 @@
+import { useState, useEffect } from "react";
+import companyLogo from "@/assets/company-logo.png";
+import datasyncImg from "@/assets/datasync.png";
+import analysisViewImg from "@/assets/analysis-view.png";
+
+const useTypingAnimation = (text: string, speed: number = 100) => {
+  const [displayedText, setDisplayedText] = useState("");
+  const [isComplete, setIsComplete] = useState(false);
+
+  useEffect(() => {
+    let index = 0;
+    setDisplayedText("");
+    setIsComplete(false);
+
+    const timer = setInterval(() => {
+      if (index < text.length) {
+        setDisplayedText(text.slice(0, index + 1));
+        index++;
+      } else {
+        setIsComplete(true);
+        clearInterval(timer);
+      }
+    }, speed);
+
+    return () => clearInterval(timer);
+  }, [text, speed]);
+
+  return { displayedText, isComplete };
+};
+
 const Index = () => {
+  const { displayedText, isComplete } = useTypingAnimation("Welcome to InicioNG Tech Hub", 80);
+
   return (
     <div className="min-h-screen bg-background flex flex-col relative overflow-hidden">
       {/* Background decorative elements */}
@@ -11,41 +43,55 @@ const Index = () => {
           <div className="w-14 h-12 bg-hero-gradient rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
             <span className="text-primary-foreground font-bold text-lg">iN</span>
           </div>
-          <span className="text-xl font-semibold text-foreground">InicioNG</span>
+          <span className="text-xl font-semibold text-foreground">InicioNG Tech</span>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center justify-center px-8 py-12 relative z-10">
-        {/* Welcome Heading */}
+        {/* Company Image */}
+        <div className="mb-8 animate-fade-in">
+          <img 
+            src={companyLogo} 
+            alt="InicioNG Tech" 
+            className="w-24 h-24 object-contain rounded-2xl shadow-lg"
+          />
+        </div>
+
+        {/* Welcome Heading with Typing Animation */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-            Innovation Starts Here
-          </span>
-          <h1 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
-            Welcome to{" "}
-            <span className="text-gradient">InicioNG Tech Hub</span>
+          <h1 className="text-3xl md:text-5xl font-bold text-foreground leading-tight min-h-[60px] md:min-h-[72px]">
+            {displayedText}
+            {!isComplete && (
+              <span className="inline-block w-1 h-8 md:h-12 bg-primary ml-1 animate-pulse" />
+            )}
           </h1>
         </div>
 
-        {/* Two Cards */}
-        <div className="flex flex-col md:flex-row gap-8 w-full max-w-3xl justify-center">
-          {/* Card 1 */}
-          <div className="group flex-1 max-w-xs bg-card rounded-2xl border border-border p-8 card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-2 cursor-pointer animate-fade-in-delay-1">
-            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-              <div className="w-6 h-6 bg-primary rounded-md" />
+        {/* Two Image Cards */}
+        <div className="flex flex-col md:flex-row gap-10 w-full max-w-4xl justify-center">
+          {/* DataSync Card */}
+          <div className="group flex-1 max-w-sm flex flex-col items-center animate-fade-in-delay-1">
+            <div className="w-full aspect-[5/4] rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-2 cursor-pointer mb-4">
+              <img 
+                src={datasyncImg} 
+                alt="DataSync" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
-            <h3 className="text-lg font-semibold text-foreground mb-2">Our Services</h3>
-            <p className="text-muted-foreground text-sm">Discover innovative solutions tailored for your business growth.</p>
+            <h3 className="text-xl font-semibold text-foreground">DataSync</h3>
           </div>
 
-          {/* Card 2 */}
-          <div className="group flex-1 max-w-xs bg-card rounded-2xl border border-border p-8 card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-2 cursor-pointer animate-fade-in-delay-2">
-            <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-              <div className="w-6 h-6 bg-accent rounded-md" />
+          {/* Analysis View Card */}
+          <div className="group flex-1 max-w-sm flex flex-col items-center animate-fade-in-delay-2">
+            <div className="w-full aspect-[5/4] rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-2 cursor-pointer mb-4">
+              <img 
+                src={analysisViewImg} 
+                alt="Analysis View" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
-            <h3 className="text-lg font-semibold text-foreground mb-2">Our Projects</h3>
-            <p className="text-muted-foreground text-sm">Explore our portfolio of successful digital transformations.</p>
+            <h3 className="text-xl font-semibold text-foreground">Analysis View</h3>
           </div>
         </div>
       </main>
