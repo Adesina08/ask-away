@@ -38,18 +38,30 @@ const Index = () => {
   const brandEnd = brandStart + brandName.length;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex flex-col relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Large glowing orbs */}
+        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#00afef]/20 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-[150px]" />
+        
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,175,239,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,175,239,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+        
+        {/* Floating particles effect */}
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#00afef]/40 rounded-full animate-ping" style={{ animationDuration: '3s' }} />
+        <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-cyan-400/30 rounded-full animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }} />
+        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-blue-400/50 rounded-full animate-ping" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }} />
+      </div>
 
       {/* Header with Logo */}
       <header className="py-8 px-8 relative z-10 animate-fade-in">
         <div className="flex items-center gap-3 group cursor-pointer">
-          <div className="w-14 h-12 bg-hero-gradient rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-            <span className="text-primary-foreground font-bold text-lg">iN</span>
+          <div className="w-14 h-12 bg-gradient-to-br from-[#00afef] to-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-[#00afef]/20 group-hover:scale-105 group-hover:shadow-[#00afef]/40 transition-all duration-300">
+            <span className="text-white font-bold text-lg">iN</span>
           </div>
-          <span className="text-xl font-semibold text-foreground"><span className="text-[#00afef]">InicioNG</span> Tech</span>
+          <span className="text-xl font-semibold text-white"><span className="text-[#00afef]">InicioNG</span> Tech</span>
         </div>
       </header>
 
@@ -66,7 +78,7 @@ const Index = () => {
 
         {/* Welcome Heading with Typing Animation */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <h1 className="text-3xl md:text-5xl font-bold text-foreground leading-tight min-h-[60px] md:min-h-[72px]">
+          <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight min-h-[60px] md:min-h-[72px]">
             {/*
               We render the typed text in three parts so we can color "InicioNG" as it appears.
               This also works while the text is still being typed.
@@ -110,21 +122,24 @@ const Index = () => {
             className="group flex-1 max-w-sm flex flex-col items-center animate-fade-in-delay-1"
             aria-label="Open DataSync"
           >
-            <div className="relative w-full aspect-[5/4] rounded-2xl shadow-lg overflow-hidden border border-border/50 bg-card/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 cursor-pointer mb-4">
+            <div className="relative w-full aspect-[5/4] rounded-2xl shadow-xl shadow-[#00afef]/10 overflow-hidden border border-[#00afef]/20 bg-slate-800/50 backdrop-blur-md transition-all duration-300 hover:-translate-y-3 hover:shadow-[#00afef]/30 hover:border-[#00afef]/40 cursor-pointer mb-4">
               <img 
                 src={datasyncImg} 
                 alt="DataSync" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
+              
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
 
               {/* Hover text */}
               <div className="pointer-events-none absolute inset-0 flex items-end justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                <div className="px-3 py-2 rounded-xl bg-background/90 border border-border/60 text-sm font-medium text-foreground shadow">
-                  Open DataSync
+                <div className="px-4 py-2 rounded-xl bg-[#00afef]/90 backdrop-blur-sm text-sm font-medium text-white shadow-lg">
+                  Open DataSync →
                 </div>
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-foreground group-hover:underline">DataSync</h3>
+            <h3 className="text-xl font-semibold text-white group-hover:text-[#00afef] transition-colors duration-300">DataSync</h3>
           </a>
 
           {/* Analysis View Card */}
@@ -135,30 +150,33 @@ const Index = () => {
             className="group flex-1 max-w-sm flex flex-col items-center animate-fade-in-delay-2"
             aria-label="Open Analysis View"
           >
-            <div className="relative w-full aspect-[5/4] rounded-2xl shadow-lg overflow-hidden border border-border/50 bg-card/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 cursor-pointer mb-4">
+            <div className="relative w-full aspect-[5/4] rounded-2xl shadow-xl shadow-cyan-500/10 overflow-hidden border border-cyan-500/20 bg-slate-800/50 backdrop-blur-md transition-all duration-300 hover:-translate-y-3 hover:shadow-cyan-500/30 hover:border-cyan-500/40 cursor-pointer mb-4">
               <img 
                 src={analysisViewImg} 
                 alt="Analysis View" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
+              
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
 
               {/* Hover text */}
               <div className="pointer-events-none absolute inset-0 flex items-end justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                <div className="px-3 py-2 rounded-xl bg-background/90 border border-border/60 text-sm font-medium text-foreground shadow">
-                  Coming soon (opens 404)
+                <div className="px-4 py-2 rounded-xl bg-cyan-500/90 backdrop-blur-sm text-sm font-medium text-white shadow-lg">
+                  Coming Soon
                 </div>
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-foreground group-hover:underline">Analysis View</h3>
+            <h3 className="text-xl font-semibold text-white group-hover:text-cyan-400 transition-colors duration-300">Analysis View</h3>
           </a>
         </div>
       </main>
 
       {/* Footer */}
       <footer className="py-8 px-8 text-center relative z-10 animate-fade-in">
-        <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-border to-transparent mb-6" />
-        <p className="text-muted-foreground text-sm">
-          © 2026 <span className="font-medium text-foreground"><span className="text-[#00afef]">InicioNG</span> Tech Team</span>
+        <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-[#00afef]/50 to-transparent mb-6" />
+        <p className="text-slate-400 text-sm">
+          © 2026 <span className="font-medium text-white"><span className="text-[#00afef]">InicioNG</span> Tech Team</span>
         </p>
       </footer>
     </div>
