@@ -115,7 +115,7 @@ const Index = () => {
             className="group flex-1 max-w-md flex flex-col items-center animate-fade-in-delay-1"
             aria-label="Open DataSync"
           >
-            <div className="relative w-full aspect-[5/4] rounded-2xl shadow-xl shadow-[#00afef]/10 overflow-hidden border border-[#00afef]/20 bg-slate-800/50 backdrop-blur-md transition-all duration-300 hover:-translate-y-3 hover:shadow-[#00afef]/30 hover:border-[#00afef]/40 cursor-pointer mb-4">
+            <div className="relative w-full aspect-[5/4] rounded-2xl shadow-xl shadow-[#00afef]/10 overflow-hidden border border-[#00afef]/20 bg-transparent backdrop-blur-sm transition-all duration-300 hover:-translate-y-3 hover:shadow-[#00afef]/30 hover:border-[#00afef]/40 cursor-pointer mb-4">
               <img 
                 src={datasyncImg} 
                 alt="DataSync" 
@@ -143,7 +143,7 @@ const Index = () => {
             className="group flex-1 max-w-md flex flex-col items-center animate-fade-in-delay-2"
             aria-label="Open Analysis View"
           >
-            <div className="relative w-full aspect-[5/4] rounded-2xl shadow-xl shadow-cyan-500/10 overflow-hidden border border-cyan-500/20 bg-slate-800/50 backdrop-blur-md transition-all duration-300 hover:-translate-y-3 hover:shadow-cyan-500/30 hover:border-cyan-500/40 cursor-pointer mb-4">
+            <div className="relative w-full aspect-[5/4] rounded-2xl shadow-xl shadow-cyan-500/10 overflow-hidden border border-cyan-500/20 bg-transparent backdrop-blur-sm transition-all duration-300 hover:-translate-y-3 hover:shadow-cyan-500/30 hover:border-cyan-500/40 cursor-pointer mb-4">
               <img 
                 src={analysisViewImg} 
                 alt="Analysis View" 
