@@ -58,9 +58,11 @@ const Index = () => {
       {/* Header with Logo */}
       <header className="py-8 px-8 relative z-10 animate-fade-in">
         <div className="flex items-center gap-3 group cursor-pointer">
-          <div className="w-14 h-12 bg-gradient-to-br from-[#00afef] to-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-[#00afef]/20 group-hover:scale-105 group-hover:shadow-[#00afef]/40 transition-all duration-300">
-            <span className="text-white font-bold text-lg">iN</span>
-          </div>
+          <img 
+            src={companyLogo} 
+            alt="InicioNG Tech" 
+            className="w-12 h-10 object-contain group-hover:scale-105 transition-transform duration-300"
+          />
           <span className="text-xl font-semibold text-white"><span className="text-[#00afef]">InicioNG</span> Tech</span>
         </div>
       </header>
