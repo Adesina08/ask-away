@@ -38,7 +38,7 @@ const Index = () => {
   const brandEnd = brandStart + brandName.length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 flex flex-col relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Large glowing orbs */}
@@ -136,8 +136,8 @@ const Index = () => {
 
               {/* Hover text */}
               <div className="pointer-events-none absolute inset-0 flex items-end justify-center p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                <div className="px-4 py-2 rounded-xl bg-[#00afef]/90 backdrop-blur-sm text-sm font-medium text-white shadow-lg">
-                  Open DataSync →
+                <div className="px-4 py-2 rounded-xl bg-[#00afef]/90 backdrop-blur-sm text-sm font-medium text-white shadow-lg text-center max-w-[280px]">
+                  Connect your SurveyCTO forms directly to PostgreSQL. Just click and sync.
                 </div>
               </div>
             </div>
