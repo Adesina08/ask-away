@@ -68,18 +68,9 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center px-8 py-12 relative z-10">
-        {/* Company Image */}
-        <div className="mb-8 animate-fade-in">
-          <img 
-            src={companyLogo} 
-            alt="InicioNG Tech" 
-            className="w-24 h-24 object-contain rounded-2xl shadow-lg"
-          />
-        </div>
-
+      <main className="flex-1 flex flex-col items-center justify-start px-8 pt-8 pb-12 relative z-10">
         {/* Welcome Heading with Typing Animation */}
-        <div className="text-center mb-16 animate-fade-in-up">
+        <div className="text-center mb-12 animate-fade-in-up">
           <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight min-h-[60px] md:min-h-[72px]">
             {/*
               We render the typed text in three parts so we can color "InicioNG" as it appears.
@@ -115,13 +106,13 @@ const Index = () => {
         </div>
 
         {/* Two Image Cards */}
-        <div className="flex flex-col md:flex-row gap-10 w-full max-w-4xl justify-center">
+        <div className="flex flex-col md:flex-row gap-10 w-full max-w-5xl justify-center">
           {/* DataSync Card */}
           <a
             href="https://surveytosql.netlify.app/"
             target="_blank"
             rel="noreferrer"
-            className="group flex-1 max-w-sm flex flex-col items-center animate-fade-in-delay-1"
+            className="group flex-1 max-w-md flex flex-col items-center animate-fade-in-delay-1"
             aria-label="Open DataSync"
           >
             <div className="relative w-full aspect-[5/4] rounded-2xl shadow-xl shadow-[#00afef]/10 overflow-hidden border border-[#00afef]/20 bg-slate-800/50 backdrop-blur-md transition-all duration-300 hover:-translate-y-3 hover:shadow-[#00afef]/30 hover:border-[#00afef]/40 cursor-pointer mb-4">
@@ -149,7 +140,7 @@ const Index = () => {
             href="https://httpstat.us/404"
             target="_blank"
             rel="noreferrer"
-            className="group flex-1 max-w-sm flex flex-col items-center animate-fade-in-delay-2"
+            className="group flex-1 max-w-md flex flex-col items-center animate-fade-in-delay-2"
             aria-label="Open Analysis View"
           >
             <div className="relative w-full aspect-[5/4] rounded-2xl shadow-xl shadow-cyan-500/10 overflow-hidden border border-cyan-500/20 bg-slate-800/50 backdrop-blur-md transition-all duration-300 hover:-translate-y-3 hover:shadow-cyan-500/30 hover:border-cyan-500/40 cursor-pointer mb-4">
